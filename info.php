@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/rating.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="/favicon.png">
-  <script src="js/dist/rating.min.js"></script>
+  <script src="js/rating.min.js"></script>
     </head>
 	
     <body>
