@@ -1,0 +1,99 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Five Star Rating</title>
+  <meta name="description" content="Five star rating component built with JavaScript and CSS, and packaged as a bower component.">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="css/rating.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+  
+
+  <div class="o-container">
+    
+  </div>
+</header>
+
+<main class="o-content">
+  <div class="o-container">
+    <div class="o-section">
+      
+    </div>
+    <div class="o-section">
+      <div id="github-icons"></div>
+    </div>
+  </div>
+</main>
+
+<footer class="o-footer">
+  <div class="o-container">
+    <small>&copy; 2017, Kiranraj</small>
+  </div>
+</footer>
+
+<script src="js/dist/rating.min.js"></script>
+<script>
+
+  /**
+   * Demo in action!
+   */
+  (function() {
+
+    'use strict';
+
+    // SHOP ELEMENT
+    var shop = document.querySelector('#shop');
+
+    // DUMMY DATA
+    var data = [
+      
+      {
+        rating: null
+      }
+    ];
+
+    // INITIALIZE
+    (function init() {
+      for (var i = 0; i < data.length; i++) {
+        addRatingWidget(buildShopItem(data[i]), data[i]);
+      }
+    })();
+
+    // BUILD SHOP ITEM
+    function buildShopItem(data) {
+      var shopItem = document.createElement('div');
+
+      var html = 
+        '<div class="c-shop-item__details">' +
+              '<ul class="c-rating"></ul>' +
+        '</div>';
+
+      shopItem.classList.add('c-shop-item');
+      shopItem.innerHTML = html;
+      shop.appendChild(shopItem);
+
+      return shopItem;
+    }
+
+    // ADD RATING WIDGET
+    function addRatingWidget(shopItem, data) {
+      var ratingElement = shopItem.querySelector('.c-rating');
+      var currentRating = data.rating;
+      var maxRating = 5;
+      var callback = function(rating) { alert(rating); };
+      var r = rating(ratingElement, currentRating, maxRating, callback);
+    }
+
+  })();
+
+</script>
+
+
+
+</body>
+</html>

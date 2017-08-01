@@ -1,0 +1,149 @@
+<html>
+<style>
+.capbox {
+	background-color: #92D433;
+	border: #B3E272 0px solid;
+	border-width: 0px 12px 0px 0px;
+	display: inline-block;
+	*display: inline; zoom: 1; /* FOR IE7-8 */
+	padding: 8px 40px 8px 8px;
+	}
+
+.capbox-inner {
+	font: bold 11px arial, sans-serif;
+	color: #000000;
+	background-color: #DBF3BA;
+	margin: 5px auto 0px auto;
+	padding: 3px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	}
+
+#CaptchaDiv {
+	font: bold 17px verdana, arial, sans-serif;
+	font-style: italic;
+	color: #000000;
+	background-color: #FFFFFF;
+	padding: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	}
+
+#CaptchaInput { margin: 1px 0px 1px 0px; width: 135px; }
+</style>
+<meta charset="UTF-8">
+		<title>savita</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="main.js"></script>
+</head>		
+<body>
+
+
+<center>
+<div class="container-fluid">
+		
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<div class="panel panel-primary">
+						<div class="panel-heading">apply here</div>
+						<div class="panel-body">
+						
+						
+<table align="center">
+<form action="cover.php" method="post" enctype="multipart/form-data">
+<tr><td>
+Name:<td><input type="text" id="name" name="name"></td></td></tr>
+<tr><td><br>Profile:<td><br><input type="text" id="profile" name="profile" ></td></td><tr>
+<tr><td><br>cover letter:<td><br><textarea id="cv" name="coverletter" ></textarea></td></td></tr>
+
+ <tr><td>file<td><br><input type="file" name="file" /></td></td></tr>
+ 
+<tr><td>I am not robot:<td>
+<div class="capbox">
+
+<div id="CaptchaDiv"></div>
+
+<div class="capbox-inner">
+Type the above number:<br>
+
+<input type="hidden" id="txtCaptcha">
+<input type="text" name="CaptchaInput" id="CaptchaInput" size="15"><br>
+
+</div>
+</div>
+</td></tr>
+ 
+<tr><td><br><input type="submit" id="insert" value="Submit" onclick="ajaxFunction(); checkform(this); return 0;"></td>
+
+<td><br><input type="reset" value="Clear"></td>
+ <td> <br><a href="info.php"><input type="button" value="Display"></a></td>
+ </td></tr>
+</table>
+</form>
+						
+                    
+
+						
+					</div>
+				</div>
+				<div class="col-md-2"></div>
+		</div></div>
+
+
+<script type="text/javascript">
+
+// Captcha Script
+
+function checkform(theform){
+var why = "";
+
+if(theform.CaptchaInput.value == ""){
+why += "- Please Enter CAPTCHA Code.\n";
+}
+if(theform.CaptchaInput.value != ""){
+if(ValidCaptcha(theform.CaptchaInput.value) == false){
+why += "- The CAPTCHA Code Does Not Match.\n";
+}
+}
+if(why != ""){
+alert(why);
+return false;
+}
+}
+
+var a = Math.ceil(Math.random() * 9)+ '';
+var b = Math.ceil(Math.random() * 9)+ '';
+var c = Math.ceil(Math.random() * 9)+ '';
+var d = Math.ceil(Math.random() * 9)+ '';
+var e = Math.ceil(Math.random() * 9)+ '';
+
+var code = a + b + c + d + e;
+document.getElementById("txtCaptcha").value = code;
+document.getElementById("CaptchaDiv").innerHTML = code;
+
+// Validate input against the generated number
+function ValidCaptcha(){
+var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
+var str2 = removeSpaces(document.getElementById('CaptchaInput').value);
+if (str1 == str2){
+return true;
+}else{
+return false;
+}
+}
+
+// Remove the spaces from the entered and generated code
+function removeSpaces(string){
+return string.split(' ').join('');
+}
+</script>
+
+
+</center>
+</body>
+</html>
